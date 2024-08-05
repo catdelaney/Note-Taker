@@ -24,8 +24,8 @@ router.get('/notes', (req, res) => {
 
 // POST route to add a new note
 router.post('/notes', (req, res) => {
-  const { title, text } = req.body;
-  const newNote = { id: uuidv4(), title, text };
+  const newNote = req.body;
+  newNote.id = uuidv4();
 
   const notes = readNotes();
   notes.push(newNote);
