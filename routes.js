@@ -3,7 +3,7 @@ const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 
 const router = require('express').Router();
-const dbPath = path.join(__dirname, 'Develop/db/db.json');
+const dbPath = path.join(__dirname, '../db/db.json');
 
 // Function to read notes from the database
 const readNotes = () => {
