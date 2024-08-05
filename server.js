@@ -1,24 +1,17 @@
 const express = require('express');
+const fs = require('fs');
 const path = require('path');
-const routes = require('./routes.js');
-
+const { v4: uuidv4 } = require('uuid');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
 
-app.use('/api', routes);
+require('./routes/htmlRoutes')(app);
+require('./routes/apiRoutes')(app);
 
-app.get('/', (req, res) =>
-  res.sendFile(path.join(__dirname, 'develop/public/index.html'))
-);
-
-app.get('/notes', (req, res) => 
-  res.sendFile(path.join(__dirname, 'develop/public/notes.html'))
-);
-
-app.listen(PORT, () => 
-  console.log(`App listening at http://localhost:${PORT}`)
-);
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
