@@ -6,10 +6,10 @@ const dbPath = path.join(__dirname, '../db/db.json');
 
 module.exports = (app) => 
     app.get('/api/notes', (req, res) => {
-        fs.readFile(dbPath, 'utf8', (err, data) => {
+      fs.readFile(dbPath, 'utf8', (err, data) => {
         if (err) {
-            console.error(err);
-            return res.status(500).json({ error: 'Failed to read notes' });
+          console.error(err);
+          return res.status(500).json({ error: 'Failed to read notes' });
         }
         res.json(JSON.parse(data));
     });
@@ -28,8 +28,8 @@ module.exports = (app) =>
 
       fs.writeFile(dbPath, JSON.stringify(notes, null, 2), (err) => {
         if (err) {
-            console.error(err);
-            return res.status(500).json({ error: 'Failed to save note.'});
+           console.error(err);
+           return res.status(500).json({ error: 'Failed to save note.' });
         }
         res.json(newNote);
       });
@@ -40,7 +40,10 @@ module.exports = (app) =>
     const noteId = req.params.id;
 
     fs.readFile(dbPath, 'utf8', (err, data) => {
-      if (err) return res.status(500).json({ error: 'Failed to read notes.' });
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ error: 'Failed to read notes.' });
+      }
       let notes = JSON.parse(data);
       notes = notes.filter(note => note.id !== noteId);
 
