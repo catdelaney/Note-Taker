@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
-const dbPath = path.join(__dirname, '../db/db.json')
+
+const dbPath = path.join(__dirname, '../db/db.json');
 
 module.exports = (app) => 
     app.get('/api/notes', (req, res) => {
@@ -43,7 +44,7 @@ module.exports = (app) =>
       let notes = JSON.parse(data);
       notes = notes.filter(note => note.id !== noteId);
 
-      fs.writeFile(path.join(__dirname, '../db/db.json'), JSON.stringify(notes, null, 2), (err) => {
+      fs.writeFile(dbPath, JSON.stringify(notes, null, 2), (err) => {
         if (err) {
             console.error(err); 
             return res.status(500).json({ error: 'Failed to delete note' });
