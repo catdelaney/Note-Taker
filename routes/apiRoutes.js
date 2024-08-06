@@ -4,14 +4,14 @@ const { v4: uuidv4 } = require('uuid');
 
 const dbPath = path.join(__dirname, '../db/db.json');
 
-module.exports = (app) => 
-    app.get('/api/notes', (req, res) => {
-      fs.readFile(dbPath, 'utf8', (err, data) => {
-        if (err) {
-          console.error(err);
-          return res.status(500).json({ error: 'Failed to read notes' });
-        }
-        res.json(JSON.parse(data));
+module.exports = (app) => {
+  app.get('/api/notes', (req, res) => {
+    fs.readFile(dbPath, 'utf8', (err, data) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ error: 'Failed to read notes' });
+      }
+      res.json(JSON.parse(data));
     });
   });
 
@@ -28,8 +28,8 @@ module.exports = (app) =>
 
       fs.writeFile(dbPath, JSON.stringify(notes, null, 2), (err) => {
         if (err) {
-           console.error(err);
-           return res.status(500).json({ error: 'Failed to save note.' });
+          console.error(err);
+          return res.status(500).json({ error: 'Failed to save note.' });
         }
         res.json(newNote);
       });
@@ -49,10 +49,11 @@ module.exports = (app) =>
 
       fs.writeFile(dbPath, JSON.stringify(notes, null, 2), (err) => {
         if (err) {
-            console.error(err); 
-            return res.status(500).json({ error: 'Failed to delete note' });
+          console.error(err);
+          return res.status(500).json({ error: 'Failed to delete note' });
         }
         res.json({ message: 'Note deleted successfully' });
       });
     });
   });
+};
