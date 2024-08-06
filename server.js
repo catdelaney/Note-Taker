@@ -25,7 +25,7 @@ app.get('/api/notes', (req, res) => {
             console.error('Error reading notes:', err);
             res.status(500).json({ error: 'Failed to read notes' });
         } else {
-            console.log('Notes read successfuly', data);
+            console.log('Notes read successfully', data);
             res.json(JSON.parse(data));
         }
     });
