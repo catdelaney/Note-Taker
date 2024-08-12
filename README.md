@@ -1,10 +1,11 @@
 # Note-Taker
 
 ## Description
-
+Note Taker is an Express.js-based application designed to write and save notes. It allows users to keep track of their important notes. The app features a landing page with a link to the notes page where users can view existing notes, add new ones and delete existing ones that are no longer relevant. 
 
 ## Screenshots
-
+[NoteTakerScreenshot1](./public/assets/images/Note%20Taker%201.png)
+[NoteTakerScreenshot2](./public/assets/images/Note%20Taker%202.png)
 
 ## User Story
 AS A small business owner
@@ -27,6 +28,6 @@ WHEN I click on the "New Note" button in the navigation at the top of the page
 THEN I am presented with empty fields to enter a new note title and the note’s text in the right-hand column and the button disappears
 
 ## Links
-Deployed Link: https://catdelaney.github.io/Note-Taker/
+Deployed Link: https://note-taker-z5c4.onrender.com
 
 GitHub Repo: https://github.com/catdelaney/Note-Taker
